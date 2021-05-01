@@ -1,0 +1,16 @@
+{
+    'name': 'products fields',
+    'version': '1.0',
+    'summary': 'Add Manufacturer and Model tables',
+    'sequence': -100,
+    'category': 'Sales',
+    'website': 'youps)',
+    'license': 'LGPL-3',
+    'depends': ['sale'],
+    'data': ['views/configuration.xml'],
+    'demo': [],
+    'qweb': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

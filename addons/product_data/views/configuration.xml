@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_only_form_view_manufacturer" model="ir.ui.view">
+        <field name="name">product_form_template_with_manufacturer</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"></field>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="manufacturer"/>
+                <field name="model"/>
+            </field>
+        </field>  
+    </record>
+
+    <record id="product_model_tree" model="ir.ui.view">
+        <field name="name">product_data.model.tree</field>
+        <field name="model">product_data.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="parent_field_id"/>
+            </tree>
+        </field>  
+    </record>
+
+    <record id="product_manufacturer_action" model="ir.actions.act_window">
+        <field name="name">Product Manufacturer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product_data.manufacturer</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first manufacturer
+            </p>
+        </field>
+    </record>
+
+    <record id="product_model_action" model="ir.actions.act_window">
+        <field name="name">Product Model</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product_data.model</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first model
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="sale.menu_product_data"
+        name="Product Data"
+        parent="sale.menu_sale_config"
+        sequence="10"/>
+
+    <menuitem id="sale.menu_product_model"
+        name="Models"
+        parent="sale.menu_product_data"
+        sequence="10"
+        action="product_model_action"/>
+
+    <menuitem id="sale.menu_product_manufacturer"
+        name="Manufacturer"
+        parent="sale.menu_product_data"
+        sequence="10"
+        action="product_manufacturer_action"/>
+
+</odoo>
